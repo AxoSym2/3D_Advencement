@@ -11,8 +11,15 @@ public class HealthBarUI : MonoBehaviour
         if (Health_Target == null) return;
 
         Health_Target.OnHealthChanged += UpdateHealthBar;
+    }
 
-        UpdateHealthBar(Health_Target.CurrentHealth, Health_Target.MaxHealth);
+    private void Start()
+    {
+        { 
+            if (Health_Target == null) return;
+
+            UpdateHealthBar(Health_Target.CurrentHealth, Health_Target.MaxHealth);
+        }
     }
 
     private void OnDisable()
