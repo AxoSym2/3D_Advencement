@@ -5,8 +5,8 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance { get; private set; }
 
     [Header("Key Bindings")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode runKey = KeyCode.LeftShift;
+    public KeyCode _jumpKey = KeyCode.Space;
+    public KeyCode _runKey = KeyCode.LeftShift;
 
     public Vector2 MoveInput {  get; private set; }
     public bool JumpPressed { get; private set; }
@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
         MoveInput = new Vector2(x, y);
 
-        JumpPressed = Input.GetKeyDown(jumpKey);
-        RunHeld = Input.GetKey(runKey);
+        JumpPressed = Input.GetKeyDown(_jumpKey);
+        RunHeld = Input.GetKey(_runKey);
     }
 }
