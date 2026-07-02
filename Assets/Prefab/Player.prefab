@@ -4929,10 +4929,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2199147791381813911}
   - component: {fileID: 1976891243014138155}
+  - component: {fileID: 145934792581610790}
   - component: {fileID: 3659139443561433666}
   - component: {fileID: 4339194366154548629}
   - component: {fileID: 4192917349062077059}
   - component: {fileID: 2921754263345895564}
+  - component: {fileID: 752968030459250371}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4980,6 +4982,25 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &145934792581610790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7252993260019693883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be7de423a6743049987d1d90cc3676d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  Transform_AttackPoint: {fileID: 3877548459101552824}
+  _attackRadius: 1.2
+  _attackDamage: 20
+  _attackCooldown: 0.6
+  _enemyMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!205 &3659139443561433666
 LODGroup:
   m_ObjectHideFlags: 0
@@ -5112,6 +5133,19 @@ CapsuleCollider:
   m_Height: 1.916385
   m_Direction: 1
   m_Center: {x: 0, y: 0.92180747, z: 0}
+--- !u!114 &752968030459250371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7252993260019693883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed57d04855c427469a373bbf6eab3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _maxHealth: 100
 --- !u!1 &7296574948146908746
 GameObject:
   m_ObjectHideFlags: 0
