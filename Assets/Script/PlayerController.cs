@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Animator _animator;
+    private Health _health;
 
     private Vector3 _moveDirection;
     private float _currentSpeed;
@@ -34,11 +35,14 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+        _health = GetComponent<Health>();
         _rigidbody.freezeRotation = true;
     }
 
     private void Update()
     {
+        if (_health != null && _health.IsDead) return;
+
         Vector2 input = InputManager.Instance.MoveInput;
         _moveDirection = new Vector3(input.x, 0f, input.y).normalized;
 
@@ -62,7 +66,8 @@ public class PlayerController : MonoBehaviour
             _animator.SetTrigger(Anim_Jump);
         }
 
-        bool isRunning = InputManager.Instance.RunHeld && _moveDirection.magnitude > 0.1f;
+        bool isMoving = _moveDirection.magnitude > 0.1f;
+        bool isRunning = InputManager.Instance.RunHeld && isMoving;
 
         _animator.SetFloat(Anim_Speed, _currentSpeed);
         _animator.SetBool(Anim_IsGrounded, _isGrounded);
@@ -71,6 +76,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_health != null && _health.IsDead)
+        {
+            _rigidbody.linearVelocity = new Vector3(0f, _rigidbody.linearVelocity.y, 0f);
+            return;
+        }
+
         _isGrounded = Physics.CheckSphere(Transform_GroundCheck.position, _groundCheckRadius, _groundMask);
 
         Vector3 horizontalVelocity = _moveDirection * _currentSpeed;

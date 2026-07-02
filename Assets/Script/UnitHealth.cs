@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 
     private Animator _animator;
     private string Anim_Hit = "Hit";
+    private string Anim_Death = "Death";
 
     public int CurrentHealth { get; private set; }
 
@@ -58,6 +59,11 @@ public class Health : MonoBehaviour
         IsDead = true;
         OnDeath?.Invoke();
 
-        gameObject.SetActive(false);
+        if (_animator != null)
+        {
+            _animator.SetTrigger(Anim_Death);
+        }
+
+        
     }
 }

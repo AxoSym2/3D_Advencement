@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float _attackCooldown = 1.2f;
 
     private Animator _animator;
+    private Health _health;
     private float _lastAttackTime = -999f;
 
     private string Anim_IsMoving = "IsMoving";
@@ -24,10 +25,12 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _health = GetComponent<Health>();
     }
 
     private void Update()
     {
+        if (_health != null && _health.IsDead) return;
         if (Transform_Player == null) return;
 
         float distance = Vector3.Distance(transform.position, Transform_Player.position);
@@ -60,7 +63,7 @@ public class EnemyController : MonoBehaviour
 
         _animator.SetBool(Anim_IsMoving, true);
     }
-
+    
     private void TryAttack()
     {
         bool canAttack = Time.time >= _lastAttackTime + _attackCooldown;
