@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5462790785789053103}
+  - component: {fileID: 3345918437701544054}
   - component: {fileID: 4411301707159787673}
   - component: {fileID: 7131129907934600863}
   - component: {fileID: 892481303948934017}
@@ -34,6 +35,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3345918437701544054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547459840937260261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0672f4547192e814b8d595bec57b2f96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealItem
+  _healAmount: 30
 --- !u!33 &4411301707159787673
 MeshFilter:
   m_ObjectHideFlags: 0
