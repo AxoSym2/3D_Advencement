@@ -1424,7 +1424,6 @@ GameObject:
   - component: {fileID: 6753357671293827182}
   - component: {fileID: 5241333487958467597}
   - component: {fileID: 272292939685677858}
-  - component: {fileID: 2850540811384830930}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -1467,7 +1466,7 @@ MonoBehaviour:
   _moveSpeed: 2.5
   _rotationSpeed: 360
   _attackDamage: 10
-  _attackCooldown: 1.2
+  _attackCooldown: 5
 --- !u!114 &259206909003897956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1551,7 +1550,7 @@ Animator:
   m_GameObject: {fileID: 1597710224903558155}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4350b309aa35d8241b5a918441629bdc, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0bc3bf4c848efc84aa1b4826d509eefd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1611,21 +1610,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &2850540811384830930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1597710224903558155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed57d04855c427469a373bbf6eab3cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  _maxHealth: 100
 --- !u!1 &1952638090312567943
 GameObject:
   m_ObjectHideFlags: 0
@@ -3289,7 +3275,7 @@ Transform:
   m_GameObject: {fileID: 4529212862476815035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.13, z: 0.521}
+  m_LocalPosition: {x: 0, y: 2.17, z: 0.521}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
