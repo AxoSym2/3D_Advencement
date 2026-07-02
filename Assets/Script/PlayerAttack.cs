@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask _enemyMask;
 
     private Animator _animator;
-    private Health _health;
+    private UnitHealth _health;
     private float _lastAttackTime = -999f;
 
     private string Anim_Attack = "Attack";
@@ -18,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _health = GetComponent<Health>();
+        _health = GetComponent<UnitHealth>();
     }
 
     private void Update()
@@ -41,7 +41,7 @@ public class PlayerAttack : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(Transform_AttackPoint.position, _attackRadius, _enemyMask);
         foreach (Collider hit in hits)
         {
-            Health targetHealth = hit.GetComponentInParent<Health>();
+            UnitHealth targetHealth = hit.GetComponentInParent<UnitHealth>();
             if (targetHealth != null)
             {
                 targetHealth.TakeDamage(_attackDamage);

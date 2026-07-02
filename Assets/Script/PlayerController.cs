@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private Animator _animator;
-    private Health _health;
+    private UnitHealth _health;
 
     private Vector3 _moveDirection;
     private float _currentSpeed;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
-        _health = GetComponent<Health>();
+        _health = GetComponent<UnitHealth>();
         _rigidbody.freezeRotation = true;
     }
 

@@ -9,7 +9,7 @@ public class HealItem : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        Health targetHealth = other.GetComponentInParent<Health>();
+        UnitHealth targetHealth = other.GetComponentInParent<UnitHealth>();
         if (targetHealth == null || targetHealth.IsDead) return;
 
         targetHealth.Heal(_healAmount);

@@ -36,7 +36,7 @@ public class DamageZone : MonoBehaviour
 
     private void ApplyTickEffect(Collider target)
     {
-        Health targetHealth = target.GetComponentInParent<Health>();
+        UnitHealth targetHealth = target.GetComponentInParent<UnitHealth>();
         if (targetHealth == null || targetHealth.IsDead) return;
 
         if (_isHealZone)

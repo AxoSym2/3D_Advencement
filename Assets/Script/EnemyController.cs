@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float _attackCooldown = 1.2f;
 
     private Animator _animator;
-    private Health _health;
+    private UnitHealth _health;
     private float _lastAttackTime = -999f;
 
     private string Anim_IsMoving = "IsMoving";
@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _health = GetComponent<Health>();
+        _health = GetComponent<UnitHealth>();
     }
 
     private void Update()
@@ -72,7 +72,7 @@ public class EnemyController : MonoBehaviour
         _lastAttackTime = Time.time;
         _animator.SetTrigger(Anim_Attack);
 
-        Health playerHealth = Transform_Player.GetComponent<Health>();
+        UnitHealth playerHealth = Transform_Player.GetComponent<UnitHealth>();
         if (playerHealth != null)
         {
             playerHealth.TakeDamage(_attackDamage);
