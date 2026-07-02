@@ -7,10 +7,12 @@ public class InputManager : MonoBehaviour
     [Header("Key Bindings")]
     public KeyCode _jumpKey = KeyCode.Space;
     public KeyCode _runKey = KeyCode.LeftShift;
+    public KeyCode _attackKey = KeyCode.Mouse0;
 
     public Vector2 MoveInput {  get; private set; }
     public bool JumpPressed { get; private set; }
     public bool RunHeld { get; private set; }
+    public bool AttackPressed { get; private set; }
 
     private void Awake()
     {
@@ -30,5 +32,6 @@ public class InputManager : MonoBehaviour
 
         JumpPressed = Input.GetKeyDown(_jumpKey);
         RunHeld = Input.GetKey(_runKey);
+        AttackPressed = Input.GetKeyDown(_attackKey);
     }
 }
