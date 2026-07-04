@@ -13,6 +13,7 @@ public class ItemData : ScriptableObject
 
     [Header("Stacking")]
     [SerializeField] private bool _isStackable = true;
+    [SerializeField] private int _maxStackCount = 5;
 
     public string ItemName
     {
@@ -37,6 +38,11 @@ public class ItemData : ScriptableObject
     public bool IsStackable
     {
         get { return _isStackable; }
+    }
+
+    public int MaxStackCount
+    {
+        get { return _maxStackCount; }
     }
 
     public void Use(UnitHealth target)

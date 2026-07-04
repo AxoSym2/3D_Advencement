@@ -32,12 +32,14 @@ public class Inventory : MonoBehaviour
     {
         if (item.IsStackable)
         {
-            InventoryEntry existing = FindEntry(item);
-            if (existing != null)
+            foreach (InventoryEntry entry in _entries)
             {
-                existing.Quantity++;
-                OnInventoryChanged?.Invoke();
-                return true;
+                if (entry.Item == item && entry.Quantity < item.MaxStackCount)
+                {
+                    entry.Quantity++;
+                    OnInventoryChanged?.Invoke();
+                    return true;
+                }
             }
         }
 
