@@ -30,12 +30,15 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(ItemData item)
     {
-        InventoryEntry existing = FindEntry(item);
-        if (existing != null)
+        if (item.IsStackable)
         {
-            existing.Quantity++;
-            OnInventoryChanged?.Invoke();
-            return true;
+            InventoryEntry existing = FindEntry(item);
+            if (existing != null)
+            {
+                existing.Quantity++;
+                OnInventoryChanged?.Invoke();
+                return true;
+            }
         }
 
         if (_entries.Count >= _maxSlotCount) return false;

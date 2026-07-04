@@ -9,7 +9,10 @@ public class ItemData : ScriptableObject
     [SerializeField] private string _description = "";
 
     [Header("Effect")]
-    [SerializeField] private int _healAmount = 20;
+    [SerializeField] private int _healAmount = 10;
+
+    [Header("Stacking")]
+    [SerializeField] private bool _isStackable = true;
 
     public string ItemName
     {
@@ -29,6 +32,11 @@ public class ItemData : ScriptableObject
     public int HealAmount
     {
         get { return _healAmount; }
+    }
+
+    public bool IsStackable
+    {
+        get { return _isStackable; }
     }
 
     public void Use(UnitHealth target)
