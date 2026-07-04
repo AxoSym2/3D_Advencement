@@ -6,8 +6,10 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject GameObject_InventoryPanel;
     [SerializeField] private Inventory Inventory_Target;
     [SerializeField] private List<ItemSlotUI> _slots;
+    [SerializeField] private ItemUsePopupUI ItemUsePopupUI_Popup;
 
     private ItemSlotUI _selectedSlot;
+    private ItemSlotUI _pendingUseSlot;
     private bool _isOpen;
 
     private void Awake()
@@ -15,6 +17,7 @@ public class InventoryUI : MonoBehaviour
         foreach (ItemSlotUI slot in _slots)
         {
             slot.OnSlotClicked += HandleSlotClicked;
+            slot.OnSlotRightClicked += HandleSlotRightClicked;
         }
     }
 
@@ -84,26 +87,35 @@ public class InventoryUI : MonoBehaviour
     {
         if (clickedSlot.CurrentItem == null) return;
 
-        if (_selectedSlot == clickedSlot)
-        {
-            UseSelectedItem();
-            return;
-        }
-
         if (_selectedSlot != null)
         {
             _selectedSlot.SetSelected(false);
+        }
+
+        if (_selectedSlot == clickedSlot)
+        {
+            _selectedSlot = null;
+            return;
         }
 
         _selectedSlot = clickedSlot;
         _selectedSlot.SetSelected(true);
     }
 
-    private void UseSelectedItem()
+    private void HandleSlotRightClicked(ItemSlotUI slot)
     {
-        if (_selectedSlot == null || _selectedSlot.CurrentItem == null) return;
+        if (slot.CurrentItem == null) return;
+        if (ItemUsePopupUI_Popup == null) return;
 
-        Inventory_Target.UseItem(_selectedSlot.CurrentItem);
-        _selectedSlot = null;
+        _pendingUseSlot = slot;
+        ItemUsePopupUI_Popup.Show(slot.CurrentItem, ConfirmUseItem);
+    }
+
+    private void ConfirmUseItem()
+    {
+        if (_pendingUseSlot == null || _pendingUseSlot.CurrentItem == null) return;
+
+        Inventory_Target.UseItem(_pendingUseSlot.CurrentItem);
+        _pendingUseSlot = null;
     }
 }

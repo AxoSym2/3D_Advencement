@@ -1,9 +1,10 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlotUI : MonoBehaviour
+public class ItemSlotUI : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image Image_Icon;
     [SerializeField] private TMP_Text Text_Quantity;
@@ -11,6 +12,8 @@ public class ItemSlotUI : MonoBehaviour
     [SerializeField] private Button Button_Slot;
 
     public Action<ItemSlotUI> OnSlotClicked;
+
+    public Action<ItemSlotUI> OnSlotRightClicked;
 
     public ItemData CurrentItem { get; private set; }
 
@@ -71,5 +74,13 @@ public class ItemSlotUI : MonoBehaviour
     private void HandleClick()
     {
         OnSlotClicked?.Invoke(this);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (CurrentItem == null) return;
+        if (eventData.button != PointerEventData.InputButton.Right) return;
+
+        OnSlotRightClicked?.Invoke(this);
     }
 }
