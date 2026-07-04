@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
     [Header("Key Bindings")]
     private KeyCode _jumpKey = KeyCode.Space;
     private KeyCode _runKey = KeyCode.LeftShift;
-    private KeyCode _attackKey = KeyCode.Mouse0;
+    private KeyCode _attackKey = KeyCode.F;
     private KeyCode _inventoryToggleKey = KeyCode.I;
 
     public Vector2 MoveInput {  get; private set; }
